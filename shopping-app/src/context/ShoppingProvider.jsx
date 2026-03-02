@@ -6,7 +6,7 @@ function ShoppingProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function fetchWeather() {
+  async function fetchProducts() {
     try {
       setLoading(true);
 
@@ -16,6 +16,7 @@ function ShoppingProvider({ children }) {
 
       const data = await response.json();
 
+      console.log(data);
       setData(data);
     } catch (err) {
       setError(err.message);
@@ -26,7 +27,7 @@ function ShoppingProvider({ children }) {
   }
 
   return (
-    <ShoppingContext.Provider value={{ data, loading, error, fetchWeather }}>
+    <ShoppingContext.Provider value={{ data, loading, error, fetchProducts }}>
       {children}
     </ShoppingContext.Provider>
   );
