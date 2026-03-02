@@ -31,3 +31,5 @@ function ShoppingProvider({ children }) {
     </ShoppingContext.Provider>
   );
 }
+
+export default ShoppingProvider;
