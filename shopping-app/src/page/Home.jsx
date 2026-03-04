@@ -16,11 +16,11 @@ function Home() {
   if (error) return <h1>{error}</h1>;
 
   return (
-    <>
+    <div className="products-container">
       {data.products.map((product) => (
         <ProductCard product={product} />
       ))}
-    </>
+    </div>
   );
 }
 
