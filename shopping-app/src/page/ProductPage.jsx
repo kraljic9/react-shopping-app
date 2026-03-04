@@ -47,7 +47,7 @@ function ProductPage() {
           {data.images.map((image) => {
             return (
               <div className="select-image-box" key={image}>
-                <img src={image} alt="" />
+                <img src={image} alt="" className="select-image" />
               </div>
             );
           })}
@@ -55,12 +55,14 @@ function ProductPage() {
       </div>
 
       <div className="product-page-information">
-        <p className="brand">{data.brand}</p>
-        <h1 className="product-page-name">{data.title}</h1>
-        <p className="product-page-information">{data.description}</p>
-        <p className="product-page-price">${data.price}</p>
+        <div className="product-page-txt">
+          <p className="brand">{data.brand}</p>
+          <h1 className="product-page-name">{data.title}</h1>
+          <p className="product-page-description">{data.description}</p>
+          <p className="product-page-price">${data.price}</p>
+        </div>
 
-        <div className="product-page-information-buttons">
+        <div className="product-page-buttons">
           <div className="set-ammount-container">
             <button className="add-ammount">+</button>
             <div className="prodcut-ammount">0</div>
