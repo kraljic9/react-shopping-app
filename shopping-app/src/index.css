@@ -108,3 +108,45 @@ body {
 }
 
 /* Product Page */
+
+.product-page-container {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product-page-images-container {
+  border: 3px solid black;
+}
+
+.slecet-images {
+  border: 3px solid green;
+}
+
+.product-page-information {
+  border: 3px solid red;
+}
+
+.product-page-txt {
+  border: 3px solid blue;
+}
+
+.product-page-buttons {
+  border: 3px solid orange;
+}
+
+.product-page-reviews {
+  border: 3px solid magenta;
+}
+
+.review-box {
+  border: 3px solid rebeccapurple;
+}
+
+.main-image {
+  width: 300px;
+}
+
+.select-image {
+  width: 300px;
+}
