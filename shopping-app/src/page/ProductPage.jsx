@@ -64,9 +64,9 @@ function ProductPage() {
 
         <div className="product-page-buttons">
           <div className="set-ammount-container">
-            <button className="add-ammount">+</button>
+            <button className="add-ammount toggle-ammount">+</button>
             <div className="prodcut-ammount">0</div>
-            <button className="subtract-ammount">-</button>
+            <button className="subtract-ammount toggle-ammount">-</button>
           </div>
 
           <button className="add-to-cart-btn">Add to cart</button>
