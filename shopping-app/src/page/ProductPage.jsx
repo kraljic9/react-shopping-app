@@ -74,15 +74,21 @@ function ProductPage() {
       </div>
 
       <div className="product-page-reviews">
-        {data.reviews.map((review) => {
-          return (
-            <div className="review-box" key={review.comment}>
-              <p className="reviewer-name">{review.reviewerName}</p>
-              <p className="review-rating">Rating: {review.rating}/5</p>
-              <p className="review-comment">{review.comment}</p>
-            </div>
-          );
-        })}
+        <>
+          <h3 className="product-reviews-title">Reviews</h3>
+          {data.reviews.map((review) => {
+            return (
+              <div className="review-box" key={review.comment}>
+                <p className="reviewer-name">{review.reviewerName}</p>
+                <p className="review-rating">Rating: {review.rating}/5</p>
+                <p className="review-comment">
+                  <div className="tool-tip"></div>
+                  {review.comment}
+                </p>
+              </div>
+            );
+          })}
+        </>
       </div>
     </div>
   );
