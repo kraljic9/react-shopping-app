@@ -111,32 +111,125 @@ body {
 
 .product-page-container {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+  gap: 32px;
+  margin-top: 32px;
 }
 
 .product-page-images-container {
-  border: 3px solid black;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  display: grid;
+  grid-template-rows: 1fr 100px;
+  gap: 12px;
+}
+
+.main-image-container {
+  grid-row: 1 / 2;
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 400px;
 }
 
 .slecet-images {
-  border: 3px solid green;
+  grid-row: 2 / 3;
+  height: auto;
+  width: 100%;
+  display: flex;
+  gap: 4px;
+}
+
+.select-image-box {
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 8px;
 }
 
 .product-page-information {
-  border: 3px solid red;
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  display: grid;
+  grid-template-rows: 1fr 50px;
+  margin-bottom: 32px;
 }
 
 .product-page-txt {
-  border: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: hsl(210, 100%, 36%);
+  margin-bottom: 32px;
+}
+
+.product-page-name {
+  font-size: 3rem;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.product-page-description {
+  color: hsl(0, 0%, 50%);
+  width: 600px;
+  margin-bottom: 32px;
+}
+
+.product-page-price {
+  margin-top: 32px;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .product-page-buttons {
-  border: 3px solid orange;
+  display: flex;
+  gap: 24px;
+}
+
+.set-ammount-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 150px;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: hsl(0, 0%, 90%);
+  align-items: center;
+}
+
+.toggle-ammount {
+  font-size: 2rem;
+  background-color: none;
+  border: none;
+  font-weight: bold;
+  color: hsl(210, 100%, 36%);
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 8px;
+}
+
+.prodcut-ammount {
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  width: 300px;
+  background-color: hsl(210, 100%, 36%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  border: none;
 }
 
 .product-page-reviews {
   border: 3px solid magenta;
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
 }
 
 .review-box {
@@ -144,9 +237,10 @@ body {
 }
 
 .main-image {
-  width: 300px;
+  width: 100%;
+  object-fit: contain;
 }
 
 .select-image {
-  width: 300px;
+  width: 100px;
 }
