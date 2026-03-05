@@ -34,10 +34,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .shopping-cart-icon {
   width: 25px;
+}
+
+.cart-items-amount {
+  position: absolute;
+  right: -20%;
+  top: -30%;
+  display: inline-block;
+  color: white;
+  background-color: hsl(7, 100%, 50%);
+  border: none;
+  border-radius: 100%;
+  width: 20px;
+  text-align: center;
+  font-size: 1rem;
 }
 
 /* Products Container */
@@ -238,6 +253,16 @@ body {
 .main-image {
   width: 100%;
   object-fit: contain;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .select-image {
@@ -278,7 +303,6 @@ body {
   position: absolute;
   display: inline-block;
   content: "";
-  position: absolute;
   border-width: 10px;
   border-style: solid;
   border-color: hsl(210, 100%, 36%) transparent transparent transparent;
