@@ -7,6 +7,7 @@ function ProductPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [productAmount, setProductAmount] = useState(0);
+  const [mainImageIndex, setMainImageIndex] = useState(0);
 
   async function fetchProductData() {
     try {
@@ -42,13 +43,22 @@ function ProductPage() {
     <div className="product-page-container">
       <div className="product-page-images-container">
         <div className="main-image-container">
-          <img src={data.images[0]} alt="" className="main-image" />
+          <img
+            src={data.images[mainImageIndex]}
+            alt=""
+            className="main-image"
+          />
         </div>
         <div className="slecet-images">
           {data.images.map((image) => {
             return (
               <div className="select-image-box" key={image}>
-                <img src={image} alt="" className="select-image" />
+                <img
+                  src={image}
+                  alt=""
+                  className="select-image"
+                  onClick={() => setMainImageIndex(data.images.indexOf(image))}
+                />
               </div>
             );
           })}
