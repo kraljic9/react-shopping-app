@@ -95,7 +95,8 @@ body {
 }
 
 .product-card-tag {
-  background-color: rgb(38, 122, 206);
+  background-color: hsl(210, 100%, 36%);
+  color: white;
   padding: 4px;
   font-weight: bold;
 }
@@ -224,16 +225,11 @@ body {
   font-size: 1.3rem;
   border-radius: 8px;
   border: none;
+  transition: background-color 0.4s ease;
 }
 
-.product-page-reviews {
-  border: 3px solid magenta;
-  grid-column: 1 / 4;
-  grid-row: 2 / 3;
-}
-
-.review-box {
-  border: 3px solid rebeccapurple;
+.add-to-cart-btn:hover {
+  background-color: hsl(210, 100%, 26%);
 }
 
 .main-image {
@@ -243,4 +239,47 @@ body {
 
 .select-image {
   width: 100px;
+}
+.product-page-reviews {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reviewer-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.review-comment {
+  margin-top: 20px;
+  font-weight: bold;
+  background-color: hsl(210, 100%, 36%);
+  width: 400px;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.product-reviews-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.tool-tip::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  position: absolute;
+  border-width: 10px;
+  border-style: solid;
+  border-color: hsl(210, 100%, 36%) transparent transparent transparent;
+  margin-top: 25px;
+  top: 30%;
+  left: 4%;
 }
