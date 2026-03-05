@@ -6,6 +6,7 @@ function ProductPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [productAmount, setProductAmount] = useState(0);
 
   async function fetchProductData() {
     try {
@@ -64,9 +65,24 @@ function ProductPage() {
 
         <div className="product-page-buttons">
           <div className="set-ammount-container">
-            <button className="add-ammount toggle-ammount">+</button>
-            <div className="prodcut-ammount">0</div>
-            <button className="subtract-ammount toggle-ammount">-</button>
+            <button
+              className="add-ammount toggle-ammount"
+              onClick={() => setProductAmount((prev) => prev + 1)}
+            >
+              +
+            </button>
+            <div className="prodcut-ammount">{productAmount}</div>
+            <button
+              className="subtract-ammount toggle-ammount"
+              onClick={() =>
+                setProductAmount((prev) => {
+                  if (prev === 0) return 0;
+                  return prev - 1;
+                })
+              }
+            >
+              -
+            </button>
           </div>
 
           <button className="add-to-cart-btn">Add to cart</button>
@@ -82,7 +98,7 @@ function ProductPage() {
                 <p className="reviewer-name">{review.reviewerName}</p>
                 <p className="review-rating">Rating: {review.rating}/5</p>
                 <p className="review-comment">
-                  <div className="tool-tip"></div>
+                  <span className="tool-tip"></span>
                   {review.comment}
                 </p>
               </div>
