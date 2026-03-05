@@ -11,6 +11,8 @@ function NavBar() {
           alt=""
           className="shopping-cart-icon"
         />
+
+        <span className="cart-items-amount">0</span>
       </div>
     </nav>
   );
