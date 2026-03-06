@@ -53,7 +53,18 @@ function ProductPage() {
     if (itemId === Number(id)) {
       if (productAmount === 0) return null;
 
-      setShoppingCart((prev) => [...prev, data]);
+      if (shoppingCart.some((item) => item.id === Number(id))) {
+        shoppingCart.map((item) => {
+          if ("quantity" in item) {
+            item.quantity += productAmount;
+            console.log(shoppingCart);
+          }
+        });
+      } else {
+        setShoppingCart((prev) => {
+          return [...prev, { ...data, quantity: productAmount }];
+        });
+      }
     }
   }
 
@@ -115,13 +126,7 @@ function ProductPage() {
 
           <button
             className="add-to-cart-btn"
-            onClick={() => {
-              let numberOfClicks = productAmount;
-
-              for (let i = 0; i < numberOfClicks; i++) {
-                addItemToCart(data.id);
-              }
-            }}
+            onClick={() => addItemToCart(data.id)}
           >
             Add to cart
           </button>
