@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ShoppingContext } from "./ShoppingContext";
 
 function ShoppingProvider({ children }) {
+  const [shoppingCart, setShoppingCart] = useState([]);
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -27,7 +29,16 @@ function ShoppingProvider({ children }) {
   }
 
   return (
-    <ShoppingContext.Provider value={{ data, loading, error, fetchProducts }}>
+    <ShoppingContext.Provider
+      value={{
+        data,
+        loading,
+        error,
+        fetchProducts,
+        shoppingCart,
+        setShoppingCart,
+      }}
+    >
       {children}
     </ShoppingContext.Provider>
   );
