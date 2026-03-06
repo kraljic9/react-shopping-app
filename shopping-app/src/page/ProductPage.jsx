@@ -34,7 +34,9 @@ function ProductPage() {
 
   useEffect(() => {
     fetchProductData();
-  }, []);
+
+    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  }, [shoppingCart]);
 
   if (!data) return null;
 
@@ -53,6 +55,7 @@ function ProductPage() {
         shoppingCart.map((item) => {
           if ("quantity" in item) {
             item.quantity += productAmount;
+            localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
             console.log(shoppingCart);
           }
         });
@@ -60,6 +63,8 @@ function ProductPage() {
         setShoppingCart((prev) => {
           return [...prev, { ...data, quantity: productAmount }];
         });
+
+        localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
       }
     }
   }
