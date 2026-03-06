@@ -46,10 +46,6 @@ function ProductPage() {
   console.log(shoppingCart);
 
   function addItemToCart(itemId) {
-    console.log("click");
-    console.log(itemId);
-    console.log(Number(id));
-
     if (itemId === Number(id)) {
       if (productAmount === 0) return null;
 
