@@ -36,7 +36,7 @@ function ProductPage() {
     fetchProductData();
 
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  }, [shoppingCart]);
+  }, []);
 
   if (!data) return null;
 
@@ -47,6 +47,7 @@ function ProductPage() {
   console.log(data);
   console.log(shoppingCart);
 
+  // Fix this because the itemID matches the numberid always it updates the quantity in all the items not just one, I think some is the problem
   function addItemToCart(itemId) {
     if (itemId === Number(id)) {
       if (productAmount === 0) return null;
