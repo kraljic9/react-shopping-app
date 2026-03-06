@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ShoppingContext } from "../context/ShoppingContext";
 
 function ProductPage() {
   const { id } = useParams();
@@ -8,6 +9,8 @@ function ProductPage() {
   const [error, setError] = useState(null);
   const [productAmount, setProductAmount] = useState(0);
   const [mainImageIndex, setMainImageIndex] = useState(0);
+
+  const { shoppingCart, setShoppingCart } = useContext(ShoppingContext);
 
   async function fetchProductData() {
     try {
@@ -38,6 +41,21 @@ function ProductPage() {
   if (loading) return <h1>Loading...</h1>;
 
   if (error) return <h1>{error}</h1>;
+
+  console.log(data);
+  console.log(shoppingCart);
+
+  function addItemToCart(itemId) {
+    console.log("click");
+    console.log(itemId);
+    console.log(Number(id));
+
+    if (itemId === Number(id)) {
+      if (productAmount === 0) return null;
+
+      setShoppingCart((prev) => [...prev, data]);
+    }
+  }
 
   return (
     <div className="product-page-container">
@@ -95,7 +113,18 @@ function ProductPage() {
             </button>
           </div>
 
-          <button className="add-to-cart-btn">Add to cart</button>
+          <button
+            className="add-to-cart-btn"
+            onClick={() => {
+              let numberOfClicks = productAmount;
+
+              for (let i = 0; i < numberOfClicks; i++) {
+                addItemToCart(data.id);
+              }
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
 
