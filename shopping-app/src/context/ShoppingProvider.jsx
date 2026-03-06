@@ -2,7 +2,9 @@ import { useState } from "react";
 import { ShoppingContext } from "./ShoppingContext";
 
 function ShoppingProvider({ children }) {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState(
+    JSON.parse(localStorage.getItem("shoppingCart")) || [],
+  );
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
