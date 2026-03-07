@@ -12,6 +12,12 @@ function CartContainer() {
     setShoppingCart((prev) => prev.filter((item) => item.id !== id));
   }
 
+  function getTotalPrice() {
+    return shoppingCart
+      .map((item) => item.price * item.quantity)
+      .reduce((sum, price) => sum + price, 0);
+  }
+
   return (
     <div className="cart-window-container">
       <div className="top">
@@ -50,7 +56,8 @@ function CartContainer() {
       </div>
       <div className="bottom">
         <div className="price-container">
-          <p className="cart-window-total">Total Price</p>
+          <p className="cart-window-total-txt">Total Price </p>
+          <span className="cart-window-total-price">${getTotalPrice()}</span>
         </div>
 
         <div className="my-shopping-cart-container">
