@@ -63,6 +63,8 @@ function ProductPage() {
 
       return [...prev, { ...data, quantity: productAmount }];
     });
+
+    setProductAmount(0);
   }
 
   return (
