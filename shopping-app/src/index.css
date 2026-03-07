@@ -24,6 +24,7 @@ body {
   color: white;
   font-weight: bold;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .shopping-cart {
@@ -405,4 +406,40 @@ body {
 
 .cart-window-total-price {
   font-weight: bold;
+}
+
+.cart-page-container {
+  border: 3px solid black;
+}
+
+.cart-page-product-container {
+  border: 3px solid red;
+}
+
+.cart-page-product-box {
+  border: 3px solid rebeccapurple;
+}
+
+.cart-page-product-img-container {
+  border: 3px solid blue;
+}
+
+.cart-page-product-img {
+  border: 3px solid orange;
+}
+
+.cart-page-proudct-info {
+  border: 3px solid green;
+}
+
+.cart-page-product-amount {
+  border: 3px solid purple;
+}
+
+.cart-page-product-price-container {
+  border: 3px solid palevioletred;
+}
+
+.cart-page-product-button-container {
+  border: 3px solid gold;
 }
