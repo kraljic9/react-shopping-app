@@ -34,7 +34,7 @@ function CartPage() {
               <p className="cart-page-product-sky">{item.sku}</p>
             </div>
 
-            <div className="cart-page-product-amount">
+            <div className="cart-page-product-amount-container">
               <select
                 name="amount"
                 id="cart-page-product-amount"
@@ -60,7 +60,7 @@ function CartPage() {
             </div>
 
             <div className="cart-page-product-button-container">
-              <button className="remove-btn">X</button>
+              <button className="cart-page-product-remove-btn">X</button>
             </div>
           </div>
         ))}
