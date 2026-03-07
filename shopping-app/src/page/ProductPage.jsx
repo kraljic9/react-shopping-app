@@ -47,27 +47,22 @@ function ProductPage() {
   console.log(data);
   console.log(shoppingCart);
 
-  // Fix this because the itemID matches the numberid always it updates the quantity in all the items not just one, I think some is the problem
-  function addItemToCart(itemId) {
-    if (itemId === Number(id)) {
-      if (productAmount === 0) return null;
+  function addItemToCart() {
+    if (productAmount === 0) return;
 
-      if (shoppingCart.some((item) => item.id === Number(id))) {
-        shoppingCart.map((item) => {
-          if ("quantity" in item) {
-            item.quantity += productAmount;
-            localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-            console.log(shoppingCart);
-          }
-        });
-      } else {
-        setShoppingCart((prev) => {
-          return [...prev, { ...data, quantity: productAmount }];
-        });
+    setShoppingCart((prev) => {
+      const exist = prev.some((item) => item.id === Number(id));
 
-        localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+      if (exist) {
+        return prev.map((item) =>
+          item.id === Number(id)
+            ? { ...item, quantity: item.quantity + productAmount }
+            : item,
+        );
       }
-    }
+
+      return [...prev, { ...data, quantity: productAmount }];
+    });
   }
 
   return (
@@ -126,10 +121,7 @@ function ProductPage() {
             </button>
           </div>
 
-          <button
-            className="add-to-cart-btn"
-            onClick={() => addItemToCart(data.id)}
-          >
+          <button className="add-to-cart-btn" onClick={() => addItemToCart()}>
             Add to cart
           </button>
         </div>
