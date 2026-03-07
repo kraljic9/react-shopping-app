@@ -1,9 +1,16 @@
 import { useContext, useState } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import CartContainer from "./CartContainer";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  function goHome() {
+    navigate("/");
+  }
 
   function toggleIsOpen() {
     if (isOpen === true) {
@@ -18,7 +25,7 @@ function NavBar() {
   return (
     <>
       <nav className="nav-bar">
-        <div className="nav-bar-logo">
+        <div className="nav-bar-logo" onClick={goHome}>
           <p>Shop Shop</p>
         </div>
 
