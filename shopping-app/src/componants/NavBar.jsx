@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import CartContainer from "./CartContainer";
 
@@ -12,6 +12,8 @@ function NavBar() {
       setIsOpen(true);
     }
   }
+
+  const { shoppingCart } = useContext(ShoppingContext);
 
   return (
     <>
@@ -27,7 +29,7 @@ function NavBar() {
             className="shopping-cart-icon"
           />
 
-          <span className="cart-items-amount">0</span>
+          <span className="cart-items-amount">{shoppingCart.length}</span>
         </div>
       </nav>
       {isOpen ? <CartContainer /> : null}
