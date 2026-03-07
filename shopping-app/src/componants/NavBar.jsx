@@ -1,20 +1,37 @@
+import { useState } from "react";
+import { ShoppingContext } from "../context/ShoppingContext";
+import CartContainer from "./CartContainer";
+
 function NavBar() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  function toggleIsOpen() {
+    if (isOpen === true) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  }
+
   return (
-    <nav className="nav-bar">
-      <div className="nav-bar-logo">
-        <p>Shop Shop</p>
-      </div>
+    <>
+      <nav className="nav-bar">
+        <div className="nav-bar-logo">
+          <p>Shop Shop</p>
+        </div>
 
-      <div className="shopping-cart">
-        <img
-          src="/src/Assest/shopping-cart.png"
-          alt=""
-          className="shopping-cart-icon"
-        />
+        <div className="shopping-cart" onClick={() => toggleIsOpen()}>
+          <img
+            src="/src/Assest/shopping-cart.png"
+            alt=""
+            className="shopping-cart-icon"
+          />
 
-        <span className="cart-items-amount">0</span>
-      </div>
-    </nav>
+          <span className="cart-items-amount">0</span>
+        </div>
+      </nav>
+      {isOpen ? <CartContainer /> : null}
+    </>
   );
 }
 
