@@ -396,3 +396,13 @@ body {
 .cart-window-total {
   margin-bottom: 20px;
 }
+
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cart-window-total-price {
+  font-weight: bold;
+}
