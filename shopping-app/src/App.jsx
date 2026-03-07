@@ -4,9 +4,6 @@ import Home from "./page/Home";
 import ProductPage from "./page/ProductPage";
 import ShoppingProvider from "./context/ShoppingProvider";
 import NavBar from "./componants/NavBar";
-import CartContainer from "./componants/CartContainer";
-import { useContext } from "react";
-import { ShoppingContext } from "./context/ShoppingContext";
 
 function App() {
   return (
