@@ -8,18 +8,20 @@ function CartContainer() {
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
   }, [shoppingCart]);
 
-  let itemsList = JSON.parse(localStorage.getItem("shoppingCart"));
-
-  console.log(itemsList);
+  function removeItem(id) {
+    setShoppingCart((prev) => prev.filter((item) => item.id !== id));
+  }
 
   return (
     <div className="cart-window-container">
       <div className="top">
         <h3 className="cart-window-title">My Shopping Cart</h3>
-        <p className="cart-window-amount">You have 0 items in your cart</p>
+        <p className="cart-window-amount">
+          You have {shoppingCart.length} items in your cart
+        </p>
       </div>
       <div className="item-window">
-        {itemsList.map((item) => {
+        {shoppingCart.map((item) => {
           return (
             <div className="cart-window-item-box" key={item.title}>
               <div className="cart-window-item-img-container">
@@ -36,7 +38,12 @@ function CartContainer() {
                 </p>
               </div>
 
-              <button className="remove-cart-window-item-btn">X</button>
+              <button
+                className="remove-cart-window-item-btn"
+                onClick={() => removeItem(item.id)}
+              >
+                X
+              </button>
             </div>
           );
         })}
