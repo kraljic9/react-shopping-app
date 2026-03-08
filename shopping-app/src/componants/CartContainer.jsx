@@ -42,7 +42,11 @@ function CartContainer() {
       <div className="item-window">
         {shoppingCart.map((item) => {
           return (
-            <div className="cart-window-item-box" key={item.title}>
+            <div
+              className="cart-window-item-box"
+              key={item.id}
+              onClick={() => navigate(`/product/${item.id}`)}
+            >
               <div className="cart-window-item-img-container">
                 <img src={item.images[0]} alt="" className="cart-window-img" />
               </div>
@@ -59,7 +63,10 @@ function CartContainer() {
 
               <button
                 className="remove-cart-window-item-btn"
-                onClick={() => removeItem(item.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeItem(item.id);
+                }}
               >
                 X
               </button>
