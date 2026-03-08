@@ -27,6 +27,41 @@ body {
   cursor: pointer;
 }
 
+.input-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.search-btn {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: hsl(210, 100%, 36%);
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.4s ease;
+}
+
+.search-btn:hover {
+  background-color: hsl(210, 100%, 26%);
+  color: white;
+}
+
+.search-input {
+  font-size: 1.1rem;
+  width: 60%;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+}
+
 .shopping-cart {
   border: 1px solid;
   padding: 4px;
