@@ -37,6 +37,10 @@ function CartPage() {
     });
   }
 
+  function removeProduct(id) {
+    setShoppingCart((prev) => prev.filter((item) => item.id !== id));
+  }
+
   return (
     <>
       <h1 className="cart-page-title">My Shopping Cart</h1>
@@ -91,7 +95,12 @@ function CartPage() {
               </div>
 
               <div className="cart-page-product-button-container">
-                <button className="cart-page-product-remove-btn">X</button>
+                <button
+                  className="cart-page-product-remove-btn"
+                  onClick={() => removeProduct(item.id)}
+                >
+                  X
+                </button>
               </div>
             </div>
           ))}
