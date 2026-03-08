@@ -1,25 +1,51 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import ProductCard from "../componants/ProductCard";
 
 function Home() {
-  const { data, loading, error, fetchProducts, page, setPage } =
-    useContext(ShoppingContext);
-
-  const [isDisabled, setIsDisabled] = useState(false);
-
-  function getPreviousPage() {
-    if (page === 1) {
-      setIsDisabled(true);
-    } else {
-      setIsDisabled(false);
-      setPage((prev) => prev - 1);
-    }
-  }
+  const categories = [
+    "beauty",
+    "fragrances",
+    "furniture",
+    "groceries",
+    "home-decoration",
+    "kitchen-accessories",
+    "laptops",
+    "mens-shirts",
+    "mens-shoes",
+    "mens-watches",
+    "mobile-accessories",
+    "motorcycle",
+    "skin-care",
+    "smartphones",
+    "sports-accessories",
+    "sunglasses",
+    "tablets",
+    "tops",
+    "vehicle",
+    "womens-bags",
+    "womens-dresses",
+    "womens-jewellery",
+    "womens-shoes",
+    "womens-watches",
+  ];
+  const {
+    data,
+    loading,
+    error,
+    fetchProducts,
+    page,
+    setPage,
+    search,
+    limit,
+    setCategory,
+    category,
+    setSearch,
+  } = useContext(ShoppingContext);
 
   useEffect(() => {
     fetchProducts();
-  }, [page]);
+  }, [page, search, category]);
 
   if (!data) return null;
 
@@ -27,28 +53,54 @@ function Home() {
 
   if (error) return <h1>{error}</h1>;
 
-  return (
-    <div className="products-container">
-      {data.products.map((product) => (
-        <ProductCard product={product} />
-      ))}
+  const totalPages = Math.ceil(data.total / limit);
 
-      <div className="btn-change-page-container">
-        <button
-          className="btn-change-page"
-          onClick={() => getPreviousPage()}
-          disabled={isDisabled}
-        >
-          Previous
-        </button>
-        <button
-          className="btn-change-page"
-          onClick={() => setPage((prev) => prev + 1)}
-        >
-          Next
-        </button>
+  return (
+    <>
+      <div className="product-category">
+        {categories.map((item) => (
+          <div
+            className="select-category"
+            key={item}
+            onClick={() => {
+              setCategory(item);
+              setPage(1);
+              setSearch("");
+            }}
+          >
+            {item}
+          </div>
+        ))}
       </div>
-    </div>
+
+      <div className="products-container">
+        {data.products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+
+        <div className="btn-change-page-container">
+          <button
+            className="btn-change-page"
+            onClick={() => setPage((prev) => prev - 1)}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+
+          <span>
+            Page {page} / {totalPages}
+          </span>
+
+          <button
+            className="btn-change-page"
+            onClick={() => setPage((prev) => prev + 1)}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
 
