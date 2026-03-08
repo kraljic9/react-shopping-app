@@ -11,17 +11,25 @@ function ShoppingProvider({ children }) {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
   const limit = 12;
-
-  const skip = (page - 1) * 12;
+  const skip = (page - 1) * limit;
 
   async function fetchProducts() {
     try {
       setLoading(true);
 
-      const response = await fetch(
-        `https://dummyjson.com/products/search?q=${search}&limit=${limit}&skip=${skip}`,
-      );
+      let api;
+
+      if (category) {
+        api = `https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`;
+      } else if (search) {
+        api = `https://dummyjson.com/products/search?q=${search}&limit=${limit}&skip=${skip}`;
+      } else {
+        api = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
+      }
+
+      const response = await fetch(api);
 
       if (!response.ok) throw new Error("Error accured while fetching data");
 
@@ -48,6 +56,11 @@ function ShoppingProvider({ children }) {
         setShoppingCart,
         page,
         setPage,
+        search,
+        setSearch,
+        limit,
+        category,
+        setCategory,
       }}
     >
       {children}
