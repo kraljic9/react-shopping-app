@@ -15,7 +15,8 @@ function CartContainer() {
   function getTotalPrice() {
     return shoppingCart
       .map((item) => item.price * item.quantity)
-      .reduce((sum, price) => sum + price, 0);
+      .reduce((sum, price) => sum + price, 0)
+      .toFixed(2);
   }
 
   return (
