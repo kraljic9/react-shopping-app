@@ -1,14 +1,27 @@
 import { useContext, useEffect } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
+import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const { shoppingCart, setShoppingCart } = useContext(ShoppingContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
   }, [shoppingCart]);
 
   console.log(shoppingCart);
+
+  function getTotalPrice() {
+    return shoppingCart
+      .map((item) => item.price * item.quantity)
+      .reduce((sum, price) => sum + price, 0)
+      .toFixed(2);
+  }
+
+  function backToProducts() {
+    navigate("/");
+  }
 
   return (
     <>
@@ -69,6 +82,17 @@ function CartPage() {
           ))}
         </div>
       </div>
+
+      <div className="cart-page-total-container">
+        <p className="cart-page-txt">
+          Total:
+          <span className="cart-page-total">${getTotalPrice()}</span>
+        </p>
+      </div>
+
+      <button className="back-to-products" onClick={backToProducts}>
+        Back to products
+      </button>
     </>
   );
 }
