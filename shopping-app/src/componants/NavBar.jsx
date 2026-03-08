@@ -35,6 +35,11 @@ function NavBar() {
           <p>Shop Shop</p>
         </div>
 
+        <div className="input-container">
+          <input type="text" className="search-input" />
+          <button className="search-btn">Search</button>
+        </div>
+
         <div className="shopping-cart" onClick={() => toggleIsOpen()}>
           <img
             src="/src/Assest/shopping-cart.png"
