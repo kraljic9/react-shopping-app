@@ -8,7 +8,7 @@ function Home() {
 
   const [isDisabled, setIsDisabled] = useState(false);
 
-  function handleClick() {
+  function getPreviousPage() {
     if (page === 1) {
       setIsDisabled(true);
     } else {
@@ -36,7 +36,7 @@ function Home() {
       <div className="btn-change-page-container">
         <button
           className="btn-change-page"
-          onClick={() => handleClick()}
+          onClick={() => getPreviousPage()}
           disabled={isDisabled}
         >
           Previous
