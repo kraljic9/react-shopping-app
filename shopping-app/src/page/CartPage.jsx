@@ -23,6 +23,20 @@ function CartPage() {
     navigate("/");
   }
 
+  function changeQuantity(value, id) {
+    setShoppingCart((prev) => {
+      let exists = shoppingCart.some((item) => item.id === id);
+
+      if (exists) {
+        return shoppingCart.map((item) =>
+          item.id === id ? { ...item, quantity: Number(value) } : item,
+        );
+      }
+
+      return [...prev];
+    });
+  }
+
   return (
     <>
       <h1 className="cart-page-title">My Shopping Cart</h1>
@@ -55,6 +69,7 @@ function CartPage() {
                   name="amount"
                   id="cart-page-product-amount"
                   value={item.quantity}
+                  onChange={(e) => changeQuantity(e.target.value, item.id)}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
