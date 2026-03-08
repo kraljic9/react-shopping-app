@@ -10,6 +10,8 @@ function NavBar() {
 
   function goHome() {
     navigate("/");
+    setCategory("");
+    setSearch("");
   }
 
   function toggleIsOpen() {
@@ -26,7 +28,15 @@ function NavBar() {
       .reduce((sum, quantity) => sum + quantity, 0);
   }
 
-  const { shoppingCart } = useContext(ShoppingContext);
+  const { shoppingCart, search, setSearch, setPage, setCategory } =
+    useContext(ShoppingContext);
+
+  console.log(search);
+
+  function getSearchResults(value) {
+    setPage(1);
+    setSearch(value);
+  }
 
   return (
     <>
@@ -36,8 +46,14 @@ function NavBar() {
         </div>
 
         <div className="input-container">
-          <input type="text" className="search-input" />
-          <button className="search-btn">Search</button>
+          <input
+            type="text"
+            className="search-input"
+            onChange={(e) => {
+              getSearchResults(e.target.value);
+              setCategory("");
+            }}
+          />
         </div>
 
         <div className="shopping-cart" onClick={() => toggleIsOpen()}>
