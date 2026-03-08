@@ -483,3 +483,9 @@ body {
   border: none;
   margin-right: 16px;
 }
+
+.cart-page-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
