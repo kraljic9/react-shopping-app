@@ -66,6 +66,31 @@ body {
   gap: 20px;
 }
 
+.btn-change-page-container {
+  grid-column: 1 / 5;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.btn-change-page {
+  background-color: hsl(210, 100%, 36%);
+  padding: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: background-color 0.4s ease;
+  margin-top: 8px;
+}
+
+.btn-change-page:hover {
+  background-color: hsl(210, 100%, 26%);
+}
+
 /* Product Card */
 
 .product-card-img {
