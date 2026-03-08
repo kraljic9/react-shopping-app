@@ -9,12 +9,19 @@ function ShoppingProvider({ children }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const limit = 12;
+
+  const skip = (page - 1) * 12;
 
   async function fetchProducts() {
     try {
       setLoading(true);
 
-      const response = await fetch("https://dummyjson.com/products");
+      //const response = await fetch("https://dummyjson.com/products");
+      const response = await fetch(
+        `https://dummyjson.com/products?limit=${limit}&skip=${skip}`,
+      );
 
       if (!response.ok) throw new Error("Error accured while fetching data");
 
@@ -39,6 +46,8 @@ function ShoppingProvider({ children }) {
         fetchProducts,
         shoppingCart,
         setShoppingCart,
+        page,
+        setPage,
       }}
     >
       {children}
