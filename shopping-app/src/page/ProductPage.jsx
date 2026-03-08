@@ -36,7 +36,7 @@ function ProductPage() {
     fetchProductData();
 
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  }, []);
+  }, [id]);
 
   if (!data) return null;
 
@@ -124,7 +124,12 @@ function ProductPage() {
           </div>
 
           <button className="add-to-cart-btn" onClick={() => addItemToCart()}>
-            Add to cart
+            <img
+              src="/src/Assest/shopping-cart.png"
+              alt=""
+              className="add-to-cart-btn-logo"
+            />
+            <span className="add-to-cart-txt">Add to cart</span>
           </button>
         </div>
       </div>
