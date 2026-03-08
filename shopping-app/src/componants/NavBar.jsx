@@ -20,6 +20,12 @@ function NavBar() {
     }
   }
 
+  function getItemsAmount() {
+    return shoppingCart
+      .map((item) => item.quantity)
+      .reduce((sum, quantity) => sum + quantity, 0);
+  }
+
   const { shoppingCart } = useContext(ShoppingContext);
 
   return (
@@ -36,7 +42,7 @@ function NavBar() {
             className="shopping-cart-icon"
           />
 
-          <span className="cart-items-amount">{shoppingCart.length}</span>
+          <span className="cart-items-amount">{getItemsAmount()}</span>
         </div>
       </nav>
       {isOpen ? <CartContainer /> : null}

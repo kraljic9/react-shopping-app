@@ -25,12 +25,18 @@ function CartContainer() {
       .toFixed(2);
   }
 
+  function getItemsAmount() {
+    return shoppingCart
+      .map((item) => item.quantity)
+      .reduce((sum, quantity) => sum + quantity, 0);
+  }
+
   return (
     <div className="cart-window-container">
       <div className="top">
         <h3 className="cart-window-title">My Shopping Cart</h3>
         <p className="cart-window-amount">
-          You have {shoppingCart.length} items in your cart
+          You have {getItemsAmount()} items in your cart
         </p>
       </div>
       <div className="item-window">
