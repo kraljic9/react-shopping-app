@@ -1,8 +1,14 @@
 import { useContext, useEffect } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
+import { useNavigate } from "react-router-dom";
 
 function CartContainer() {
   const { shoppingCart, setShoppingCart } = useContext(ShoppingContext);
+  const navigate = useNavigate();
+
+  function goToCartPage() {
+    navigate("/cart");
+  }
 
   useEffect(() => {
     localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
@@ -62,7 +68,9 @@ function CartContainer() {
         </div>
 
         <div className="my-shopping-cart-container">
-          <button className="my-shopping-cart">My Shopping Cart</button>
+          <button className="my-shopping-cart" onClick={goToCartPage}>
+            My Shopping Cart
+          </button>
         </div>
       </div>
     </div>
