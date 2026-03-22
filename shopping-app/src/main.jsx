@@ -4,6 +4,7 @@ import "./index.css";
 import "./componants.css";
 import "./ProductPage.css";
 import "./cartcontainer.css";
+import "./cartpage.css";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
