@@ -1,16 +1,18 @@
 .cart-window-container {
-  z-index: 1;
+  z-index: 999; /* Ensure it stays above everything */
   position: absolute;
-  right: 20px;
-  top: 10%;
-  width: 500px;
+  right: 10px;
+  top: 100%; /* Sits right at the bottom edge of the Nav */
+  width: 400px; /* Max width for desktop */
+  max-width: 95vw; /* Won't ever be wider than the phone screen */
   height: auto;
+  max-height: 80vh; /* Adds a scrollbar if you have 20 items in the cart */
   background-color: white;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 25px;
+  padding: 15px;
+  top: 60px;
 }
 
 .cart-window-item-box {
@@ -45,13 +47,17 @@
 }
 
 .remove-cart-window-item-btn {
-  align-self: flex-start;
-  justify-self: flex-end;
   background-color: white;
   border: none;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  padding: 10px; /* Invisible extra space to make it easier to tap */
+  min-width: 44px; /* Apple/Google recommended minimum touch size */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-window-item-info {
@@ -65,8 +71,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  overflow-y: scroll;
-  height: 300px;
+  overflow-y: auto; /* Enable scrolling for many items */
+  padding-right: 5px; /* Space for the scrollbar */
 }
 
 .cart-window-total {
@@ -81,4 +87,29 @@
 
 .cart-window-total-price {
   font-weight: bold;
+}
+
+/* Mobile Fix for the Dropdown */
+@media (max-width: 768px) {
+  .cart-window-container {
+    width: 60vw;
+    right: 2.5vw; /* Centers it on mobile */
+  }
+
+  .cart-window-item-img-container {
+    width: 100px; /* Smaller images for the tiny window */
+  }
+
+  .my-shopping-cart {
+    width: 100%; /* Full width button is easier to click on mobile */
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-window-container {
+    width: 70vh;
+    right: 2.5%;
+    top: 70px;
+  }
 }

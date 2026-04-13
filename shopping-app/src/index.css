@@ -1,3 +1,8 @@
+#root {
+  width: 100%;
+  overflow-x: hidden; /* This is a "safety net" to prevent horizontal scrolling */
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -17,5 +22,30 @@ body {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stack the product page info below the image */
+  .product-page-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .main-image-container {
+    width: 100%;
+  }
+
+  /* Make the cart container full width on mobile */
+  .cart-window-container {
+    width: 95%;
+    right: 2.5%;
+    top: 70px;
+  }
+
+  /* Adjust the grid for 2 columns instead of 4 */
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
