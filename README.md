@@ -2,6 +2,18 @@
 
 A high-performance **E-commerce simulator** built with **React**, featuring a dynamic product catalog, category filtering, and a detailed product viewing system.
 
+## 🎬 Video Demo
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/6cd18d85-8034-4b0c-96a6-ea1b796d24a3" width="100%" controls title="Shopping app demo">
+  </video>
+</p>
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/0c162e28-b0e2-4569-ba5a-b622d9af85a4" width="100%" controls title="Shopping app demo">
+  </video>
+</p>
+
 ## 🛍️ Project Showcase
 
 <table align="center">
